@@ -18,21 +18,145 @@ const kMessageContainerDecoration = BoxDecoration(
   ),
 );
 
+TextStyle kHeadingStyle1(
+    {double fontSize = 32.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w900,
+    fontVariations: const [FontVariation('wght', 900)],
+  );
+}
+
+TextStyle kHeadingStyle2(
+    {double fontSize = 24.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w700,
+    fontVariations: const [FontVariation('wght', 900)],
+  );
+}
+
+TextStyle kSubheadingStyle1(
+    {double fontSize = 18.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w700,
+    fontVariations: const [FontVariation('wght', 700)],
+  );
+}
+
+TextStyle kSubheadingStyle2(
+    {double fontSize = 16.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w700,
+    fontVariations: const [FontVariation('wght', 700)],
+  );
+}
+
+TextStyle kBodyStyle1(
+    {double fontSize = 14.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w700,
+    fontVariations: const [FontVariation('wght', 700)],
+  );
+}
+
+TextStyle kBodyStyle2(
+    {double fontSize = 14.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w600,
+    fontVariations: const [FontVariation('wght', 600)],
+  );
+}
+
+TextStyle kMetadataStyle1(
+    {double fontSize = 12.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w600,
+    fontVariations: const [FontVariation('wght', 600)],
+  );
+}
+
+TextStyle kMetadataStyle2(
+    {double fontSize = 10.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w600,
+    fontVariations: const [FontVariation('wght', 600)],
+  );
+}
+
+TextStyle kMetadataStyle3(
+    {double fontSize = 10.0, Color color = const Color(0xFF0F1828)}) {
+  return TextStyle(
+    color: color,
+    fontFamily: 'Mulish',
+    fontSize: fontSize,
+    fontWeight: FontWeight.w700,
+    fontVariations: const [FontVariation('wght', 700)],
+  );
+}
+
 InputDecoration getInputDecor(String hint) {
   return InputDecoration(
     hintText: hint,
+    hintStyle: kBodyStyle1(color: const Color(0xFFADB5BD)),
+    fillColor: Colors.grey.withOpacity(0.1),
+    filled: true,
     contentPadding:
         const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
     border: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
     ),
     enabledBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
-      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
     ),
     focusedBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
-      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      borderSide: BorderSide(color: Color(0x90002DE3), width: 2.0),
+      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+    ),
+  );
+}
+
+Widget getButton(String text, {required VoidCallback onPressed}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 16.0),
+    child: Material(
+      color: const Color(0xFF002DE3),
+      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+      elevation: 5.0,
+      child: MaterialButton(
+        onPressed: () {
+          onPressed();
+        },
+        minWidth: 200.0,
+        height: 42.0,
+        child: Text(
+          text,
+          style: kSubheadingStyle2(color: const Color(0xFFF7F7FC)),
+        ),
+      ),
     ),
   );
 }
