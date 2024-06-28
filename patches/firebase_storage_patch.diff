@@ -1,0 +1,36 @@
+diff --git a/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StorageListTask.swift b/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StorageListTask.swift
+index d4d2a27..f53a72b 100644
+--- a/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StorageListTask.swift
++++ b/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StorageListTask.swift
+@@ -91,8 +91,8 @@ class StorageListTask: StorageObservableTask, StorageTaskManagement {
+       }
+	   // Prepare page size
+-      if let pageSize {
+-        queryParams["maxResults"] = "\(pageSize)"
++      if let pageSize = self.pageSize {
++        queryParams["maxResults"] = "\(pageSize)"
+       }
+
+       // Prepare previous page token
+-      if let previousPageToken {
+-        queryParams["pageToken"] = previousPageToken
++      if let previousPageToken = self.previousPageToken {
++        queryParams["pageToken"] = previousPageToken
+       }
+
+
+diff --git a/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageDownloadTask.swift b/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageDownloadTask.swift
+index abcd123..efgh456 100644
+--- a/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageDownloadTask.swift
++++ b/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageDownloadTask.swift
+@@ -124,7 +124,7 @@ class StorageDownloadTask: StorageObservableTask, StorageTaskManagement {
+         DispatchQueue.main.async {
+           // Ensure we haven't been cancelled
+           guard self.state == .running else { return }
+-          if let progress {
+-            self.progress = progress
++          if let progress = self.progress {
++            self.progress = progress
+           }
+         }
+       }
