@@ -14,6 +14,7 @@ index d4d2a27..f53a72b 100644
        // Prepare previous page token
 -      if let previousPageToken {
 -        queryParams["pageToken"] = previousPageToken
+}
 +      if let previousPageToken = self.previousPageToken {
 +        queryParams["pageToken"] = previousPageToken
        }
@@ -29,8 +30,14 @@ index abcd123..efgh456 100644
            guard self.state == .running else { return }
 -          if let progress {
 -            self.progress = progress
+         }
 +          if let progress = self.progress {
 +            self.progress = progress
            }
+-          if let fileURL {
+}
++         if let fileURL = self.fileURL {
+}
+
          }
        }

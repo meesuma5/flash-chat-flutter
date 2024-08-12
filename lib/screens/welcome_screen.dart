@@ -24,61 +24,77 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Column(
-              children: [
-                const SizedBox(height: 100.0),
-                SizedBox(height: 250.0, child: Image.asset('images/first.png')),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Hero(
-                      tag: 'logo',
-                      child: SizedBox(
-                        height: 40.0,
-                        child: Image.asset('images/logo.png')
-                            .animate()
-                            .scale(
-                              duration: 1.seconds,
-                              begin: const Offset(0.5, 0.5),
-                              end: const Offset(1.5, 1.5),
-                              curve: Curves.bounceOut,
-                            )
-                            .fade(
-                              duration: 1.seconds,
-                            ),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Column(
+                children: [
+                  const SizedBox(height: 100.0),
+                  SizedBox(
+                      height: 250.0,
+                      child: MediaQuery.of(context).platformBrightness ==
+                              Brightness.dark
+                          ? Image.asset('images/first_dark.png')
+                          : Image.asset('images/first.png')),
+                  Hero(
+                    tag: 'logo',
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 45.0,
+                            child: Image.asset('images/logo.png')
+                                .animate()
+                                .scale(
+                                  duration: 1.seconds,
+                                  begin: const Offset(0.5, 0.5),
+                                  end: const Offset(1.5, 1.5),
+                                  curve: Curves.bounceOut,
+                                )
+                                .fade(
+                                  duration: 1.seconds,
+                                ),
+                          ),
+                          const SizedBox(width: 20.0),
+                          AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            animatedTexts: [
+                              TypewriterAnimatedText(
+                                'Chateo',
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(fontSize: 45),
+                                speed: const Duration(milliseconds: 500),
+                              ),
+                            ],
+                            pause: const Duration(minutes: 2),
+                            onTap: () {
+                              print("Tap Event");
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 30.0),
-                    AnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          'Chateo',
-                          textStyle: kHeadingStyle1(fontSize: 45.0),
-                          speed: const Duration(milliseconds: 500),
-                        ),
-                      ],
-                      pause: const Duration(minutes: 2),
-                      onTap: () {
-                        print("Tap Event");
-                      },
+                  ),
+                  if (_isFirstAnimationComplete)
+                    SizedBox(
+                      height: 10,
                     ),
-                  ],
-                ),
-                if (_isFirstAnimationComplete)
                   Text(
                     'Connecting you with the world!',
                     textAlign: TextAlign.center,
                     style: kHeadingStyle1(
-                        fontSize: 20.0, color: const Color(0xFF0F1828)),
+                        fontSize: 20.0,
+                        color: Theme.of(context).primaryColorDark),
                   )
                       .animate()
                       .slideY(
@@ -90,26 +106,34 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       .fade(
                         duration: 1.seconds,
                       )
-              ],
-            ),
-            Column(
-              children: [
-                getButton('Register', onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                }),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: TextButton(
-                    onPressed: () {
-                      //Go to login screen.
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    child: Text('Log In', style: kSubheadingStyle1()),
-                  ),
+                ],
+              ),
+              SafeArea(
+                bottom: true,
+                top: false,
+                child: Column(
+                  children: [
+                    getButton('Register', context: context, onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    }),
+                    TextButton(
+                      onPressed: () {
+                        //Go to login screen.
+                        Navigator.pushNamed(context, '/login');
+                      },
+                      child: Text(
+                        'Log In',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleSmall
+                            ?.copyWith(color: Theme.of(context).primaryColor),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
