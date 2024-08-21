@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-=======
+
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 import 'package:logger/logger.dart' as log;
+import 'theme.dart';
 
 const kBlueBody = Color(0x90002DE3);
 const kBlue2 = Color(0xFF002DE3);
@@ -15,7 +15,6 @@ const streamApi = 'chvdm4sex6zq';
 final logger = log.Logger();
 const genericUrl =
     'https://firebasestorage.googleapis.com/v0/b/chateo-72766.appspot.com/o/profile_pictures%2FGeneric%20Image.png?alt=media&token=995355af-474e-40e8-8f43-daff2ff93918';
->>>>>>> Stashed changes
 
 const kSendButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
@@ -34,8 +33,6 @@ const kMessageContainerDecoration = BoxDecoration(
     top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
   ),
 );
-<<<<<<< Updated upstream
-=======
 
 TextStyle kHeadingStyle1(
     {double fontSize = 32.0, Color color = const Color(0xFF0F1828)}) {
@@ -241,8 +238,10 @@ Widget getImageButton(
   );
 }
 
-extension StreaChatContext on BuildContext {
-  String? get userImage => StreamChatCore.of(this).currentUser!.image;
+extension StreamChatContext on BuildContext {
+  /// Fetches the current user image.
+  String? get userImage => user!.image;
+
+  /// Fetches the current user.
   User? get user => StreamChatCore.of(this).currentUser;
 }
->>>>>>> Stashed changes

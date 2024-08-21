@@ -1,5 +1,5 @@
-import 'package:flash_chat/constants.dart';
-import 'package:flash_chat/widgets/widgets.dart';
+import '../../constants.dart';
+import '../../widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 

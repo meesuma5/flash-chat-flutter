@@ -4,15 +4,12 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0<3.0.0"
+  sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-<<<<<<< Updated upstream
 
-  cupertino_icons: ^0.1.2
-=======
   cupertino_icons: ^1.0.2
   flutter_animate: ^4.5.0
   animated_text_kit: ^4.2.2
@@ -33,7 +30,6 @@ dependencies:
   cloud_functions: ^5.0.4
   image_picker: ^1.1.2
   firebase_storage: ^12.1.3
->>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +37,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  fonts:
+    - family: Mulish
+      fonts:
+      - asset: fonts/Mulish.ttf
   assets:
   - images/
+  - fonts/

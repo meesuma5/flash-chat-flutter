@@ -6,6 +6,7 @@ import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
+import '../../constants.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});

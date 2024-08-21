@@ -1,24 +1,17 @@
-<<<<<<< Updated upstream
-import 'package:flutter/material.dart';
-=======
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart'
     as stream_chat;
->>>>>>> Stashed changes
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-<<<<<<< Updated upstream
-class _WelcomeScreenState extends State<WelcomeScreen> {
-=======
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   bool _isFirstAnimationComplete = false;
@@ -60,73 +53,90 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     });
   }
 
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
-                ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-<<<<<<< Updated upstream
-=======
-                  const SizedBox(
-                    height: 10,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Column(
+                children: [
+                  const SizedBox(height: 100.0),
+                  SizedBox(
+                      height: 250.0,
+                      child: MediaQuery.of(context).platformBrightness ==
+                              Brightness.dark
+                          ? Image.asset('images/first_dark.png')
+                          : Image.asset('images/first.png')),
+                  Hero(
+                    tag: 'logo',
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 45.0,
+                            child: Image.asset('images/logo.png')
+                                .animate()
+                                .scale(
+                                  duration: 1.seconds,
+                                  begin: const Offset(0.5, 0.5),
+                                  end: const Offset(1.5, 1.5),
+                                  curve: Curves.bounceOut,
+                                )
+                                .fade(
+                                  duration: 1.seconds,
+                                ),
+                          ),
+                          const SizedBox(width: 20.0),
+                          AnimatedTextKit(
+                            isRepeatingAnimation: false,
+                            animatedTexts: [
+                              TypewriterAnimatedText(
+                                'Chateo',
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(fontSize: 45),
+                                speed: const Duration(milliseconds: 500),
+                              ),
+                            ],
+                            pause: const Duration(minutes: 2),
+                            onTap: () {
+                              print("Tap Event");
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   if (_isFirstAnimationComplete)
-                    Text(
-                      'Connecting you with the world!',
-                      textAlign: TextAlign.center,
-                      style: kHeadingStyle1(
-                          fontSize: 20.0,
-                          color: Theme.of(context).primaryColorDark),
-                    )
-                        .animate()
-                        .slideY(
-                          duration: 1.seconds,
-                          begin: 1.0,
-                          end: 0.0,
-                          curve: Curves.easeInOut,
-                        )
-                        .fade(
-                          duration: 1.seconds,
-                        )
+                    SizedBox(
+                      height: 10,
+                    ),
+                  Text(
+                    'Connecting you with the world!',
+                    textAlign: TextAlign.center,
+                    style: kHeadingStyle1(
+                        fontSize: 20.0,
+                        color: Theme.of(context).primaryColorDark),
+                  )
+                      .animate()
+                      .slideY(
+                        duration: 1.seconds,
+                        begin: 1.0,
+                        end: 0.0,
+                        curve: Curves.easeInOut,
+                      )
+                      .fade(
+                        duration: 1.seconds,
+                      )
                 ],
               ),
               SafeArea(
@@ -151,29 +161,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                   ],
->>>>>>> Stashed changes
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

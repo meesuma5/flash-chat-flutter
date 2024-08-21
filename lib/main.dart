@@ -1,23 +1,3 @@
-<<<<<<< Updated upstream
-import 'package:flutter/material.dart';
-import 'package:flash_chat/screens/welcome_screen.dart';
-import 'package:flash_chat/screens/login_screen.dart';
-import 'package:flash_chat/screens/registration_screen.dart';
-import 'package:flash_chat/screens/chat_screen.dart';
-
-void main() => runApp(FlashChat());
-
-class FlashChat extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          body1: TextStyle(color: Colors.black54),
-        ),
-      ),
-      home: WelcomeScreen(),
-=======
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/constants.dart';
@@ -89,7 +69,6 @@ class Chateo extends StatelessWidget {
         '/update_details': (context) => const UpdateDetailsScreen(),
         '/profile': (context) => const ProfileScreen(),
       },
->>>>>>> Stashed changes
     );
   }
 }
